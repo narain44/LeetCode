@@ -19,41 +19,44 @@ and that "hit" isn't the answer even though it occurs more because it is banned.
 
 ```
 public String mostCommonWord(String paragraph, String[] banned) {
-  //Sanity Check
-  if(paragraph == null || paragraph.length()==0){
-    return null;
-  }
-  
-  //Construct a set of banned words
-  Set<String> setBannedWords=new HashSet<>();
-  for(String word:banned) setBannedWords.add(word);
-  
-  //Intialize a SB and countMap
-  StringBuilder wordSB=new StringBuider();
-  Map<String,Integer> wordCountMap = new HashMap<String,Integer>();
-  String answer="";
-  int answerNumberOfOccurances=0;
-  for(int i=0;i<paragraph.length;i++){
-    Character c=paragraph.charAt(i);
-    if(c.isLetter()){
-      wordSB.append(tolowercase(c));
-    }else{
-      if(wordSB.size != 0){
-        String word=wordSB.toString();
-        if(!setBannedWords.contains(word)){
-          wordCountMap.put(word,wordCountMap.getOrDefault(word,0)+1);
-          if(wordCountMap.get(word) > answerNumberOfOccurances){
-            answer=word;
-            answerNumberOfOccurances=wordCountMap.get(word);
-          }
-        }  
-    }
-  }
-  return answer;
+        //Sanity Check
+        if (paragraph == null || paragraph.length() == 0) {
+            return null;
+        }
+
+        //This Ensures that there is alteast one non letter character at the end
+        paragraph=paragraph+".";
+
+        //Construct a set of banned words
+        Set<String> setBannedWords = new HashSet<>();
+        for (String word : banned) setBannedWords.add(word);
+
+        //Intialize a SB and countMap
+        StringBuilder wordSB = new StringBuilder();
+        Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
+        String answer = "";
+        int answerNumberOfOccurances = 0;
+        for (int i = 0; i < paragraph.length(); i++) {
+            Character c = paragraph.charAt(i);
+            if (Character.isLetter(c)) {
+                wordSB.append(Character.toLowerCase(c));
+            } else if (wordSB.length() > 0){
+                String word = wordSB.toString();
+                if (!setBannedWords.contains(word)) {
+                    wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+                    if (wordCountMap.get(word) > answerNumberOfOccurances) {
+                        answer = word;
+                        answerNumberOfOccurances = wordCountMap.get(word);
+                    }
+                }
+                wordSB = new StringBuilder();
+            }
+        }
+        return answer;
 }
 
 ```
 ---
-**Time Complexity** : O(N), since we loop through all characters once.
+**Time Complexity** : O(P+B), where P=Paragraph,B=BannedWorlds, since we loop through the Banned words and  Paragraph once.
 
-**Space Complexity** : O(N), since we store the words and their count in a map.
+**Space Complexity** : O(P+B), where P=Paragraph,B=BannedWorld, since we store the Banned words and  Paragraph.
