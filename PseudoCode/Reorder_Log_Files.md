@@ -50,3 +50,30 @@ public String[] reorderLogFiles(String[] logs) {
 }
 ```
 
+```
+   public String[] reorderLogFiles(String[] logs) {
+        Arrays.sort(logs,(log1,log2) ->{
+          String[] log1Words=log1.split(" ");
+          String[] log2Words=log2.split(" ");
+          boolean log1IsDigit=Character.isDigit(log1Words[1].charAt(0));
+          boolean log2IsDigit=Character.isDigit(log2Words[1].charAt(0));
+          
+          //Check if both logs are alphabets
+          if(!log1IsDigit && !log2IsDigit){
+            int cmp=log1Words[1].compareTo(log2Words[1]); //Compare first log entry
+             if (cmp != 0) return cmp;
+            return log1Words[0].compareTo(log2Words[0]);
+            //if ( cmp == 0 ) return log1Words[0].compareTo(log2Words[0]); //If first log entry is equal, compare id's
+           // return cmp; //Else return the comparision results
+          }
+         return log1IsDigit ? (log2IsDigit ? 0 : 1) : -1;
+          // else if(!log1IsDigit){ //First log is word, so it should come before the secone one
+          //   return -1;
+          // }else{ //Second log is word, so it should come before the first one
+          //   return 1;
+          // }
+          
+        });
+        return logs;
+    }
+   ```
