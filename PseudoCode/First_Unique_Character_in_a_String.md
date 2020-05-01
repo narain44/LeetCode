@@ -17,15 +17,15 @@ Solution
 ```
 public int findUniqueCharacter(String s){
 
-  Map<Character,int> charCountMap=new Hashmap<>();
+  Map<Character,Integer> charCountMap=new Hashmap<>();
   //First Pass, build HashMap
-  for(int i=0;i<s.length;i++){
+  for(int i=0;i<s.length();i++){
     Character c=s.charAt(i);
-    charCountMap.put(c,getOrDefault(charCountMap.get(c,0))+1);
+    charCountMap.put(c,charCountMap.getOrDefault(c,0)+1);
   }
   
-  //Second Pass
-  for(int i=0;i<s.length;i++){
+  //Second Pass, Check in the hash map
+  for(int i=0;i<s.length();i++){
     Character c=s.charAt(i);
     if(charCountMap.get(c) == 1){
       return i;
@@ -33,4 +33,8 @@ public int findUniqueCharacter(String s){
   return -1
 }
 ```
+---
+1. Time Complexity - O(N) + O(N) for two loops ==> O(N)
+2. Space Complexity - O(N) for the map that holds the count
+
 
