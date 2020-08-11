@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Solution {
     public static void main(String []args){
         Solution instance=new Solution();
-        System.out.println(Arrays.toString(instance.productExceptSelf(new int[]{1,2,3,4})));
+//        System.out.println(Arrays.toString(instance.productExceptSelf(new int[]{1,2,3,4})));
         System.out.println(Arrays.toString(instance.productExceptSelfSpaceOptimized(new int[]{1,2,3,4})));
     }
 

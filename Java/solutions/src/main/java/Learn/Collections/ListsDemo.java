@@ -1,4 +1,4 @@
-package Learn.Lists;
+package Learn.Collections;
 
 import java.util.*;
 
@@ -42,7 +42,8 @@ public class ListsDemo {
         food.remove(1);
         System.out.println("After Removing at 1 "+food);
         food.add(1,"Chinese");
-        System.out.println("After Adding at 1 "+food);
+        System.out.println("After Adding at 1 "+food.get(1));
+        System.out.println("Food is  "+food);
 
 
     }

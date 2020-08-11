@@ -22,7 +22,7 @@ public class BackTrackingFindAllSubsets {
 
     public static void main(String[] args) {
         BackTrackingFindAllSubsets instance = new BackTrackingFindAllSubsets();
-        int[] nums = new int[]{1, 2, 2};
+        int[] nums = new int[]{1, 2, 3};
         List<List<Integer>> result = instance.subsets(nums);
         for (List<Integer> permutation : result) {
             System.out.println(permutation.toString());

@@ -12,8 +12,8 @@ public class Solution {
         for(String s:results){
             System.out.print(s+" ");
         }
-        results= instance.reorderLogFiles(logs);
-        System.out.println("OfficialSolution :");
+        results= instance.reorderLogFilesOfficialSolution(logs);
+        System.out.println("\nOfficialSolution :");
         for(String s:results){
             System.out.print(s+" ");
         }
