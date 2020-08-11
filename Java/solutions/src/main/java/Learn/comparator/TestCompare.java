@@ -58,8 +58,8 @@ public class TestCompare {
 
     private static void sortPrimitivesAndWrappers() {
         //sort primitives array like int array
-        int[] intArr = {5, 9, 1, 10};
-        Arrays.sort(intArr);
+        Integer[] intArr = {5, 9, 1, 10};
+        Arrays.sort(intArr,(a,b) -> {return b-a;});
         System.out.println(Arrays.toString(intArr));
 
         //sorting String array
